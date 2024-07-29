@@ -2,17 +2,19 @@ const input_agua = document.getElementById('agua');
 const input_cimento = document.getElementById('cimento');
 const input_areia = document.getElementById('areia');
 const input_cal = document.getElementById('cal');
+const input_cal2 = document.getElementById('cal2');
 const input_volume = document.getElementById('volume');
 
-const displays = ['display-agua','display-cimento','display-areia','display-cal','display-volume'];
+const displays = ['display-agua','display-cimento','display-areia','display-cal','display-cal2','display-volume'];
 
 function obterValores(){
     const agua = parseFloat(input_agua.value);
     const cimento = parseFloat(input_cimento.value);
     const areia = parseFloat(input_areia.value);
     const cal = parseFloat(input_cal.value);
+    const cal2 = parseFloat(input_cal2.value);
     const volume = parseFloat(input_volume.value);
-    return {agua, cimento, areia, cal, volume}
+    return {agua, cimento, areia, cal, cal2, volume}
 }
 
 function camposCompleto() {
@@ -20,20 +22,23 @@ function camposCompleto() {
     for (const key in valores){
         const valor = valores[key]
         if (isNaN(valor) || valor <= 0) {
-            return false
+            if (key != "cal2"){
+                return false
+            }
         }
     }
     return true;
 }
 
 function escreverResultado(resultado) {
-    const unidades = ['Litros','Kg','m³','m³','m³']
+    const unidades = ['m³','Kg','m³','m³','m³','m³']
     let i = 0;
 
     for (const d of displays) {
         const name_display = d.split('-')[1];
         const display = document.getElementById(d);
-        display.innerText = resultado[name_display].toFixed(3) + " " + unidades[i];
+        const text = resultado[name_display].toFixed(3) + " " + unidades[i]
+        display.innerText = text.replaceAll('.',',');
         display.classList.remove('text-secondary');
         display.classList.add('fw-bold');
         i++;
@@ -43,15 +48,15 @@ function escreverResultado(resultado) {
 function resetarCampos() {
     for (const d of displays) {
         const display = document.getElementById(d);
-        display.innerText = "Preencha todos os dados";
+        display.innerHTML = "Preencha todos os dados";
         display.classList.add('text-secondary');
     }
 }
 
 function calcularVolumes(valores) {
-    const {agua, cimento, areia, cal, volume} = valores;
+    const {agua, cimento, areia, cal, cal2, volume} = valores;
     const padiola = 36; // o volume de uma padiola é 36 litros
-    const soma_traco = cimento + areia + cal;
+    const soma_traco = cimento + areia + cal + cal2;
 
     const traco_agua = agua/padiola;
 
@@ -61,8 +66,9 @@ function calcularVolumes(valores) {
     const volume_cimento = (cimento / somatorio_traco) * volume;
     const volume_areia =  (areia / somatorio_traco) * volume;
     const volume_cal =  (cal / somatorio_traco) * volume;
+    const volume_cal2 =  (cal2 / somatorio_traco) * volume;
 
-    return {volume_agua, volume_cimento, volume_areia, volume_cal};
+    return {volume_agua, volume_cimento, volume_areia, volume_cal, volume_cal2};
 }
 
 function calularPeso(volume_cimento){
@@ -73,10 +79,10 @@ function calularPeso(volume_cimento){
 
 function calcularResultado(valores){
     const {volume} = valores;
-    const {volume_agua, volume_cimento, volume_areia, volume_cal} = calcularVolumes(valores);
+    const {volume_agua, volume_cimento, volume_areia, volume_cal, volume_cal2} = calcularVolumes(valores);
     const peso_cimento = calularPeso(volume_cimento);
 
-    return {agua:volume_agua, cimento: peso_cimento, areia: volume_areia, cal: volume_cal, volume};
+    return {agua:volume_agua, cimento: peso_cimento, areia: volume_areia, cal: volume_cal, cal2: volume_cal2, volume};
 }
 
 function calcular(event) {

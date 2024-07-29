@@ -32,6 +32,10 @@
                             <input oninput="calcular(event)" type="number" id="areia" class="form-control w-100 border-secondary rounded" name="areia" min="1" max="10" step="0.5">
                         </div>
                         <div class="col input-group flex-column">
+                            <label for="cal2" class="form-label">Calc (1~10):</label>
+                            <input oninput="calcular(event)" type="number" id="cal2" class="form-control w-100 border-secondary rounded" name="cal2" min="1" max="10" step="0.5">
+                        </div>
+                        <div class="col input-group flex-column">
                             <label for="volume" class="form-label text-nowrap">Volume Total (m³):</label>
                             <input oninput="calcular(event)" type="number" id="volume" class="form-control w-100 border-secondary rounded" name="volume" min="1" max="10" step="0.5">
                         </div>
@@ -49,12 +53,16 @@
                             <p id="display-cimento" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
-                            <label for="display-cal" class="form-label">Cal:</label>
+                            <label for="display-cal" class="form-label">Areia Média:</label>
                             <p id="display-cal" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
-                            <label for="display-areia" class="form-label">Areia:</label>
+                            <label for="display-areia" class="form-label">Areia Grossa:</label>
                             <p id="display-areia" class="ms-2 text-secondary">Preencha todos os dados</p>
+                        </div>
+                        <div class="input-group">
+                            <label for="display-cal2" class="form-label">Cal:</label>
+                            <p id="display-cal2" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
                             <label for="display-volume" class="form-label">Volume Total:</label>
