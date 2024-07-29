@@ -11,7 +11,7 @@
     <div class="container">
         <div class="card card-primary mt-4 shadow">
             <h1 class="card-header text-bg-primary text-center" >CalculaArgamassa</h1>
-            <div class="card-body bg-body-tertiary d-flex flex-column gap-4">
+            <form class="card-body bg-body-tertiary d-flex flex-column gap-4">
                 <div class="card shadow-sm border-secondary">
                     <h2 class="card-header text-bg-secondary">Seleção do Traço</h2>
                     <div class="card-body row flex-wrap">
@@ -32,7 +32,7 @@
                             <input oninput="calcular(event)" type="number" id="areia" class="form-control w-100 border-secondary rounded" name="areia" min="1" max="10" step="0.5">
                         </div>
                         <div class="col input-group flex-column">
-                            <label for="cal2" class="form-label">Calc (1~10):</label>
+                            <label for="cal2" class="form-label">Cal (1~10):</label>
                             <input oninput="calcular(event)" type="number" id="cal2" class="form-control w-100 border-secondary rounded" name="cal2" min="1" max="10" step="0.5">
                         </div>
                         <div class="col input-group flex-column">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <script src="script.js"></script>
