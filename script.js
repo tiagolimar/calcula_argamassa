@@ -22,7 +22,7 @@ function camposCompleto() {
     for (const key in valores){
         const valor = valores[key]
         if (isNaN(valor) || valor <= 0) {
-            if (key != "cal2"){
+            if (key != 'cal2' || key != 'cal' || key!= 'areia'){
                 return false
             }
         }
