@@ -11,7 +11,7 @@
     <div class="container">
         <div class="card card-primary mt-4 shadow">
             <h1 class="card-header text-bg-primary text-center" >CalculaArgamassa</h1>
-            <form class="card-body bg-body-tertiary d-flex flex-column gap-4">
+            <div class="card-body bg-body-tertiary d-flex flex-column gap-4">
                 <div class="card shadow-sm border-secondary">
                     <h2 class="card-header text-bg-secondary">Seleção do Traço</h2>
                     <div class="card-body row flex-wrap">
@@ -20,19 +20,23 @@
                             <input oninput="calcular(event)" type="number" id="agua" class="form-control w-100 border-secondary rounded" name="agua" step="0.01">
                         </div>
                         <div class="col input-group flex-column">
-                            <label for="cimento" class="form-label">Cimento (1~10):</label>
+                            <label for="cimento" class="form-label">Cimento (0~10):</label>
                             <input oninput="calcular(event)" type="number" id="cimento" class="form-control w-100 border-secondary rounded" name="cimento" min="1" max="10" step="0.5">
                         </div>
                         <div class="col input-group flex-column">
-                            <label for="cal" class="form-label">Areia Média (1~10):</label>
+                            <label for="areia2" class="form-label text-nowrap">Areia Fina (0~10):</label>
+                            <input oninput="calcular(event)" type="number" id="areia2" class="form-control w-100 border-secondary rounded" name="cal" min="1" max="10" step="0.5">
+                        </div>
+                        <div class="col input-group flex-column">
+                            <label for="cal" class="form-label text-nowrap">Areia Média (0~10):</label>
                             <input oninput="calcular(event)" type="number" id="cal" class="form-control w-100 border-secondary rounded" name="cal" min="1" max="10" step="0.5">
                         </div>
                         <div class="col input-group flex-column">
-                            <label for="areia" class="form-label">Areia Grossa (1~10):</label>
+                            <label for="areia" class="form-label text-nowrap">Areia Grossa (0~10):</label>
                             <input oninput="calcular(event)" type="number" id="areia" class="form-control w-100 border-secondary rounded" name="areia" min="1" max="10" step="0.5">
                         </div>
                         <div class="col input-group flex-column">
-                            <label for="cal2" class="form-label">Cal (1~10):</label>
+                            <label for="cal2" class="form-label">Cal (0~10):</label>
                             <input oninput="calcular(event)" type="number" id="cal2" class="form-control w-100 border-secondary rounded" name="cal2" min="1" max="10" step="0.5">
                         </div>
                         <div class="col input-group flex-column">
@@ -53,6 +57,10 @@
                             <p id="display-cimento" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
+                            <label for="display-areia2" class="form-label">Areia Fina:</label>
+                            <p id="display-areia2" class="ms-2 text-secondary">Preencha todos os dados</p>
+                        </div>
+                        <div class="input-group">
                             <label for="display-cal" class="form-label">Areia Média:</label>
                             <p id="display-cal" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
@@ -70,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
