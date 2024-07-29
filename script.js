@@ -27,13 +27,13 @@ function camposCompleto() {
 }
 
 function escreverResultado(resultado) {
-    const unidades = ['Litros','Kg','Litros','Litros','Litros']
+    const unidades = ['Litros','Kg','m³','m³','m³']
     let i = 0;
 
     for (const d of displays) {
         const name_display = d.split('-')[1];
         const display = document.getElementById(d);
-        display.innerText = resultado[name_display].toFixed(2) + " " + unidades[i];
+        display.innerText = resultado[name_display].toFixed(3) + " " + unidades[i];
         display.classList.remove('text-secondary');
         display.classList.add('fw-bold');
         i++;
@@ -67,7 +67,7 @@ function calcularVolumes(valores) {
 
 function calularPeso(volume_cimento){
     const peso_cimento_por_padiola = 70/36;
-    const peso_cimento = volume_cimento * peso_cimento_por_padiola;
+    const peso_cimento = volume_cimento * peso_cimento_por_padiola*1000;
     return peso_cimento;
 }
 
