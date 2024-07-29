@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>CalculaArgamassa</title>
+</head>
+<body class="p-4 bg-secondary-subtle">
+    <div class="container">
+        <div class="card card-primary mt-4 shadow">
+            <h1 class="card-header text-bg-primary text-center" >CalculaArgamassa</h1>
+            <div class="card-body bg-body-tertiary d-flex flex-column gap-4">
+                <div class="card shadow-sm border-secondary">
+                    <h2 class="card-header text-bg-secondary">Seleção do Traço</h2>
+                    <div class="card-body row flex-wrap">
+                        <div class="col input-group flex-column">
+                            <label for="agua" class="form-label">Água (litros):</label>
+                            <input oninput="calcular(event)" type="number" id="agua" class="form-control w-100 border-secondary rounded" name="agua" step="0.01">
+                        </div>
+                        <div class="col input-group flex-column">
+                            <label for="cimento" class="form-label">Cimento (1~10):</label>
+                            <input oninput="calcular(event)" type="number" id="cimento" class="form-control w-100 border-secondary rounded" name="cimento" min="1" max="10" step="0.5">
+                        </div>
+                        <div class="col input-group flex-column">
+                            <label for="cal" class="form-label">Cal (1~10):</label>
+                            <input oninput="calcular(event)" type="number" id="cal" class="form-control w-100 border-secondary rounded" name="cal" min="1" max="10" step="0.5">
+                        </div>
+                        <div class="col input-group flex-column">
+                            <label for="areia" class="form-label">Areia (1~10):</label>
+                            <input oninput="calcular(event)" type="number" id="areia" class="form-control w-100 border-secondary rounded" name="areia" min="1" max="10" step="0.5">
+                        </div>
+                        <div class="col input-group flex-column">
+                            <label for="volume" class="form-label text-nowrap">Volume Total (Litros):</label>
+                            <input oninput="calcular(event)" type="number" id="volume" class="form-control w-100 border-secondary rounded" name="volume" min="1" max="10" step="0.5">
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow-sm border-secondary">
+                    <h2 class="card-header text-bg-secondary">Relação de Material</h2>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label for="display-agua" class="form-label">Água:</label>
+                            <p id="display-agua" class="ms-2 text-secondary">Preencha todos os dados</p>
+                        </div>
+                        <div class="input-group">
+                            <label for="display-cimento" class="form-label">Cimento:</label>
+                            <p id="display-cimento" class="ms-2 text-secondary">Preencha todos os dados</p>
+                        </div>
+                        <div class="input-group">
+                            <label for="display-cal" class="form-label">Cal:</label>
+                            <p id="display-cal" class="ms-2 text-secondary">Preencha todos os dados</p>
+                        </div>
+                        <div class="input-group">
+                            <label for="display-areia" class="form-label">Areia:</label>
+                            <p id="display-areia" class="ms-2 text-secondary">Preencha todos os dados</p>
+                        </div>
+                        <div class="input-group">
+                            <label for="display-volume" class="form-label">Volume Total:</label>
+                            <p id="display-volume" class="ms-2 text-secondary">Preencha todos os dados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

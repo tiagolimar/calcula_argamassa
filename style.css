@@ -1,0 +1,4 @@
+.card-body .input-group input{
+    min-width: 125px;
+    max-height: 2em;
+}
