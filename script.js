@@ -1,35 +1,28 @@
-const input_agua = document.getElementById('agua');
-const input_cimento = document.getElementById('cimento');
-const input_areia = document.getElementById('areia');
-const input_areia2 = document.getElementById('areia2');
-const input_cal = document.getElementById('cal');
-const input_cal2 = document.getElementById('cal2');
-const input_volume = document.getElementById('volume');
-
 const displays = ['display-agua','display-cimento','display-areia2','display-areia','display-cal','display-cal2','display-volume'];
 
 function obterValores(){
-    const agua = parseFloat(input_agua.value);
-    const cimento = parseFloat(input_cimento.value);
-    const areia = parseFloat(input_areia.value);
-    const areia2 = parseFloat(input_areia2.value);
-    const cal = parseFloat(input_cal.value);
-    const cal2 = parseFloat(input_cal2.value);
-    const volume = parseFloat(input_volume.value);
-    return {agua, cimento, areia2, areia, cal, cal2, volume}
+    const inputs = ['agua','cimento','areia','areia2','cal','cal2','volume'];
+    const valores = {}
+    for (const input of inputs) {
+        const valor = document.getElementById(input).value;
+        const parse_valor = parseFloat(valor);
+        valores[input] = isNaN(parse_valor) ? 0 : parse_valor;
+    }
+    return valores
 }
 
 function camposCompleto() {
     const valores = obterValores();
-    for (const key in valores){
-        const valor = valores[key]
-        if (isNaN(valor) || valor <= 0) {
-            if (key != 'cal2' & key != 'cal' & key!= 'areia' & key != 'areia2'){
-                return false
+    if (isNaN(valores.agua) == false && valores.agua > 0 && isNaN(valores.volume) == false && valores.volume > 0){
+        for (const key in valores){
+            const valor = valores[key]
+            if (isNaN(valor) == false && valor > 0 && key !== 'agua' && key !== 'volume') {
+                return true;
             }
         }
     }
-    return true;
+    
+    return false;
 }
 
 function escreverResultado(resultado) {
@@ -39,6 +32,7 @@ function escreverResultado(resultado) {
     for (const d of displays) {
         const name_display = d.split('-')[1];
         const display = document.getElementById(d);
+        
         if (!isNaN(resultado[name_display])){
             const text = resultado[name_display].toFixed(3) + " " + unidades[i]
             display.innerText = text.replaceAll('.',',');
@@ -68,10 +62,10 @@ function calcularVolumes(valores) {
 
     const volume_agua = (traco_agua / somatorio_traco) * volume;
     const volume_cimento = (cimento / somatorio_traco) * volume;
-    const volume_areia2 =  (areia2 / somatorio_traco) * volume;
-    const volume_areia =  (areia / somatorio_traco) * volume;
-    const volume_cal =  (cal / somatorio_traco) * volume;
-    const volume_cal2 =  (cal2 / somatorio_traco) * volume;
+    const volume_areia2 = (areia2 / somatorio_traco) * volume;
+    const volume_areia = (areia / somatorio_traco) * volume;
+    const volume_cal = (cal / somatorio_traco) * volume;
+    const volume_cal2 = (cal2 / somatorio_traco) * volume;
 
     return {volume_agua, volume_cimento, volume_areia2, volume_areia, volume_cal, volume_cal2};
 }
@@ -90,10 +84,37 @@ function calcularResultado(valores){
     return {agua:volume_agua, cimento: peso_cimento, areia2:volume_areia2, areia: volume_areia, cal: volume_cal, cal2: volume_cal2, volume};
 }
 
+function sincronizarTotais(id) {
+    const peso_especifico_argamassa = 2000; // 2000,00 kg/m³
+    
+    if (id == 'volume'){
+        const volume = parseFloat(document.getElementById('volume').value);
+        const input_peso = document.getElementById('peso');
+    
+        if (isNaN(volume) == false){
+            input_peso.value = volume*peso_especifico_argamassa;
+        }
+    }
+
+    if (id == 'peso'){
+        const peso = parseFloat(document.getElementById('peso').value);
+        const input_volume = document.getElementById('volume');
+    
+        if (isNaN(peso) == false){
+            input_volume.value = peso/peso_especifico_argamassa;
+        }
+    }
+}
+
 function calcular(event) {
     event.preventDefault();
+    const id = event.target.id;
+
+    sincronizarTotais(id);
+
     if (camposCompleto()){
         const valores_input = obterValores();
+        
         const resultado = calcularResultado(valores_input);
         escreverResultado(resultado);
     }else{
