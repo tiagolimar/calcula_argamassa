@@ -1,5 +1,7 @@
 const displays = ['display-agua','display-cimento','display-areia2','display-areia','display-cal','display-cal2','display-volume'];
 
+const peso_especifico_argamassa = 2000; // em kg/m³
+
 function obterValores(){
     const inputs = ['agua','cimento','areia','areia2','cal','cal2','volume'];
     const valores = {}
@@ -84,9 +86,7 @@ function calcularResultado(valores){
     return {agua:volume_agua, cimento: peso_cimento, areia2:volume_areia2, areia: volume_areia, cal: volume_cal, cal2: volume_cal2, volume};
 }
 
-function sincronizarTotais(id) {
-    const peso_especifico_argamassa = 2000; // 2000,00 kg/m³
-    
+function sincronizarTotais(id) {    
     if (id == 'volume'){
         const volume = parseFloat(document.getElementById('volume').value);
         const input_peso = document.getElementById('peso');
@@ -121,3 +121,10 @@ function calcular(event) {
         resetarCampos()
     }
 }
+
+function main() {
+    const display_peso = document.getElementById('display-peso');
+    display_peso.innerHTML = peso_especifico_argamassa + ' ';
+}
+
+main();
