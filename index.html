@@ -21,6 +21,10 @@
                             <input oninput="calcular(event)" type="number" id="agua" class="form-control w-100 border-secondary rounded" name="agua" step="0.01">
                         </div>
                         <div class="col input-group flex-column">
+                            <label for="brita" class="form-label">Brita (0~10):</label>
+                            <input oninput="calcular(event)" type="number" id="brita" class="form-control w-100 border-secondary rounded" name="brita" min="1" max="10" step="0.5">
+                        </div>
+                        <div class="col input-group flex-column">
                             <label for="cimento" class="form-label">Cimento (0~10):</label>
                             <input oninput="calcular(event)" type="number" id="cimento" class="form-control w-100 border-secondary rounded" name="cimento" min="1" max="10" step="0.5">
                         </div>
@@ -42,6 +46,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="card shadow-sm border-secondary">
                     <h3 class="card-header text-bg-secondary">Seleção de Quantidade</h3>
                     <div class="card-body row flex-wrap">
@@ -53,38 +59,44 @@
                             <label for="peso" class="form-label text-nowrap">Peso Total (Kg):</label>
                             <input oninput="calcular(event)" type="number" id="peso" class="form-control w-100 border-secondary rounded" name="peso" min="1" max="10" step="0.5">                            
                         </div>
-                        <div class="col-12 form-text">*Está sendo considerado um peso específico de <span id="display-peso"></span> Kg/m³ para a argamassa.</div>
+                        <div class="col-12 form-text">*Está sendo considerado um peso específico de <span id="display-peso"></span> Kg/m³ para a argamassa e <span id="display-peso-concreto"></span>Kg/m³ para concreto (considera-se concreto quando há presença de brita no traço).</div>
                     </div>
-                </div>          
+                </div>   
+                
+                
                 <div class="card shadow-sm border-secondary">
                     <h3 class="card-header text-bg-secondary">Relação de Material</h3>
                     <div class="card-body">
                         <div class="input-group">
-                            <label for="display-agua" class="form-label">Água:</label>
+                            <h3 for="display-agua" class="fs-6 fw-normal">Água:</h3>
                             <p id="display-agua" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
-                            <label for="display-cimento" class="form-label">Cimento:</label>
+                            <h3 for="display-brita" class="fs-6 fw-normal">Brita:</h3>
+                            <p id="display-brita" class="ms-2 text-secondary">Preencha todos os dados</p>
+                        </div>
+                        <div class="input-group">
+                            <h3 for="display-cimento" class="fs-6 fw-normal">Cimento:</h3>
                             <p id="display-cimento" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
-                            <label for="display-areia2" class="form-label">Areia Fina:</label>
+                            <h3 for="display-areia2" class="fs-6 fw-normal">Areia Fina:</h3>
                             <p id="display-areia2" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
-                            <label for="display-cal" class="form-label">Areia Média:</label>
+                            <h3 for="display-cal" class="fs-6 fw-normal">Areia Média:</h3>
                             <p id="display-cal" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
-                            <label for="display-areia" class="form-label">Areia Grossa:</label>
+                            <h3 for="display-areia" class="fs-6 fw-normal">Areia Grossa:</h3>
                             <p id="display-areia" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
-                            <label for="display-cal2" class="form-label">Cal:</label>
+                            <h3 for="display-cal2" class="fs-6 fw-normal">Cal:</h3>
                             <p id="display-cal2" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                         <div class="input-group">
-                            <label for="display-volume" class="form-label">Volume Total:</label>
+                            <h3 for="display-volume" class="fs-6 fw-normal">Volume Total:</h3>
                             <p id="display-volume" class="ms-2 text-secondary">Preencha todos os dados</p>
                         </div>
                     </div>
