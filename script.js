@@ -95,11 +95,10 @@ function calcularResultado(valores){
     return {agua:volume_agua, brita: volume_brita, cimento: peso_cimento, areia2:volume_areia2, areia: volume_areia, cal: volume_cal, cal2: volume_cal2, volume};
 }
 
-function sincronizarTotais(id) {    
+function sincronizarTotais(id, peso_especifico) {
     if (id == 'volume'){
         const volume = parseFloat(document.getElementById('volume').value);
         const input_peso = document.getElementById('peso');
-        const peso_especifico = ehConcreto()? peso_especifico_concreto : peso_especifico_argamassa;
     
         if (isNaN(volume) == false){
             input_peso.value = volume*peso_especifico;
@@ -119,8 +118,10 @@ function sincronizarTotais(id) {
 function calcular(event) {
     event.preventDefault();
     const id = event.target.id;
+    
+    const peso_especifico = ehConcreto()? peso_especifico_concreto : peso_especifico_argamassa;
 
-    sincronizarTotais(id);
+    sincronizarTotais(id, peso_especifico);
 
     if (camposCompleto()){
         const valores_input = obterValores();
