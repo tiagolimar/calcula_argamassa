@@ -63,7 +63,7 @@ function resetarCampos() {
 
 function calcularVolumes(valores) {
     const {agua, brita, cimento, areia2, areia, cal, cal2, volume} = valores;
-    const padiola = 36; // o volume de uma padiola é 36 litros
+    const padiola = 51; // volume em litros de uma padiola
     const soma_traco = brita + cimento + areia2 + areia + cal + cal2;
 
     const traco_agua = agua/padiola;
